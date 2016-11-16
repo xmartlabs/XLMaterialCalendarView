@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">XLMaterialCalendarView</string>
+    <string name="use_ranges">Use ranges</string>
 </resources>

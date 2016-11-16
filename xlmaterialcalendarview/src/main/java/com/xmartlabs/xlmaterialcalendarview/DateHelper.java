@@ -12,7 +12,7 @@ import org.threeten.bp.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
-class DateHelper {
+final class DateHelper {
   static CalendarDay localDateToCalendarDay(LocalDate localDate) {
     return CalendarDay.from(DateTimeUtils.toDate(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
   }

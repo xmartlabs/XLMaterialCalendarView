@@ -17,7 +17,7 @@ import rx.android.MainThreadSubscription;
 
 import static com.jakewharton.rxbinding.internal.Preconditions.checkUiThread;
 
-class CalendarViewRangeSelectedOnSubscribe implements Observable.OnSubscribe<List<LocalDate>> {
+final class CalendarViewRangeSelectedOnSubscribe implements Observable.OnSubscribe<List<LocalDate>> {
   private final MaterialCalendarView calendarView;
 
   CalendarViewRangeSelectedOnSubscribe(MaterialCalendarView calendarView) {

@@ -6,12 +6,14 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import org.threeten.bp.Clock;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.ZoneId;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -29,8 +31,10 @@ public class XLMaterialCalendarView extends MaterialCalendarView {
    * @return the selected day, or null if no selection. If in multiple selection mode, this
    * will return the last selected date.
    */
+  @Nullable
   public LocalDate getSelectedLocalDate() {
-    return DateHelper.calendarDayToLocalDate(getSelectedDate());
+    CalendarDay calendarDay = getSelectedDate();
+    return calendarDay == null ? null : DateHelper.calendarDayToLocalDate(calendarDay);
   }
 
   /** @return all of the currently selected dates. */
@@ -60,13 +64,17 @@ public class XLMaterialCalendarView extends MaterialCalendarView {
   }
 
   /** @return the minimum selectable date for the calendar, if any */
+  @Nullable
   public LocalDate getMinimumLocalDate() {
-    return DateHelper.calendarDayToLocalDate(getMinimumDate());
+    CalendarDay calendarDay = getMinimumDate();
+    return calendarDay == null ? null : DateHelper.calendarDayToLocalDate(calendarDay);
   }
 
   /** @return the maximum selectable date for the calendar, if any */
+  @Nullable
   public LocalDate getMaximumLocalDate() {
-    return DateHelper.calendarDayToLocalDate(getMaximumDate());
+    CalendarDay calendarDay = getMaximumDate();
+    return calendarDay == null ? null : DateHelper.calendarDayToLocalDate(calendarDay);
   }
 
   /**
@@ -80,21 +88,69 @@ public class XLMaterialCalendarView extends MaterialCalendarView {
   }
 
   /** Initialize the parameters from scratch. */
-  public StateBuilder newState() {
+  public XLStateBuilder newState() {
     return new XLStateBuilder();
   }
 
-  private class XLStateBuilder extends MaterialCalendarView.StateBuilder {
+  public class XLStateBuilder extends MaterialCalendarView.StateBuilder {
     /** @param localDate set the minimum selectable localDate, null for no minimum */
-    public StateBuilder setMinimumDate(@Nullable LocalDate localDate) {
+    public XLStateBuilder setMinimumDate(@Nullable LocalDate localDate) {
       setMinimumDate(DateHelper.localDateToCalendarDay(localDate));
       return this;
     }
 
     /** @param localDate set the maximum selectable localDate, null for no maximum */
-    public StateBuilder setMaximumDate(@Nullable LocalDate localDate) {
+    public XLStateBuilder setMaximumDate(@Nullable LocalDate localDate) {
       setMaximumDate(DateHelper.localDateToCalendarDay(localDate));
       return this;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public XLStateBuilder setFirstDayOfWeek(int day) {
+      return (XLStateBuilder) super.setFirstDayOfWeek(day);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public XLStateBuilder setCalendarDisplayMode(CalendarMode mode) {
+      return (XLStateBuilder) super.setCalendarDisplayMode(mode);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public XLStateBuilder setMinimumDate(@Nullable Calendar calendar) {
+      return (XLStateBuilder) super.setMinimumDate(calendar);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public XLStateBuilder setMinimumDate(@Nullable Date date) {
+      return (XLStateBuilder) super.setMinimumDate(date);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public XLStateBuilder setMinimumDate(@Nullable CalendarDay calendar) {
+      return (XLStateBuilder) super.setMinimumDate(calendar);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public XLStateBuilder setMaximumDate(@Nullable Calendar calendar) {
+      return (XLStateBuilder) super.setMaximumDate(calendar);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public XLStateBuilder setMaximumDate(@Nullable Date date) {
+      return (XLStateBuilder) super.setMaximumDate(date);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public XLStateBuilder setMaximumDate(@Nullable CalendarDay calendar) {
+      return (XLStateBuilder) super.setMaximumDate(calendar);
     }
   }
 }

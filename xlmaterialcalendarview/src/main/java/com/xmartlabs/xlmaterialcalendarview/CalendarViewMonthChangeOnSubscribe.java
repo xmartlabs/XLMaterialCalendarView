@@ -14,7 +14,7 @@ import rx.android.MainThreadSubscription;
 
 import static com.jakewharton.rxbinding.internal.Preconditions.checkUiThread;
 
-class CalendarViewMonthChangeOnSubscribe implements Observable.OnSubscribe<YearMonth> {
+final class CalendarViewMonthChangeOnSubscribe implements Observable.OnSubscribe<YearMonth> {
   private final MaterialCalendarView calendarView;
 
   CalendarViewMonthChangeOnSubscribe(MaterialCalendarView calendarView) {
