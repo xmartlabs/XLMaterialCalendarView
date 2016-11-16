@@ -2,7 +2,6 @@ package com.xmartlabs.xlmaterialcalendarview;
 
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
-import android.view.View;
 
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
