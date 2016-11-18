@@ -34,7 +34,7 @@ dependencies {
     }
 }
 
-apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
+apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle' // Doesn't work with GPG 2.1
 
 afterEvaluate { project ->
     android.libraryVariants.all { variant ->

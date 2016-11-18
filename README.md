@@ -8,10 +8,18 @@ For information on how to use it, please see [the sample](sample/src/main/java/c
 
 ## Usage
 
-With Gradle:
+With Gradle and [JitPack](https://jitpack.io/), first:
 
 ```groovy
-// TODO (to be uploaded to The Central Repository): compile 'com.xmartlabs.xlmaterialcalendarview:0.1.0'
+repositories {
+    maven { url "https://jitpack.io" }
+}
+```
+
+And then:
+
+```groovy
+compile 'com.github.xmartlabs:xlmaterialcalendarview:-SNAPSHOT'
 ```
 
 The minimum supported Android version is 4.0 (API level 15).
